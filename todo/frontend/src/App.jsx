@@ -6,7 +6,8 @@ import { CreateTodo } from './components/CreateTodo'
 import { Todos } from './components/Todos'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [todos, setTodos] = useState([])
 
   return (
     <>
@@ -16,15 +17,15 @@ function App() {
           {
             title:"Study",
             description:"Consistency",
-            copleted:true
+            completed:true
           },
           {
             title:"Go to gym",
             description:"At 6AM",
-            copleted:true
+            completed:true
           }
         ]}
-      />
+      ></Todos>
     </>
   )
 }
