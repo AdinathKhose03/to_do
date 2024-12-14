@@ -1,10 +1,12 @@
 const express = require("express")
 const { createTodo, updateTodo } = require("./types")
 const { todo } = require("./db")
+const cors = require("cors")
 
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 app.get('/todo', async function(req, res){
@@ -35,7 +37,7 @@ app.post('/todo', async function(req, res){
         res.json({
             msg:"To-do created"
         })
-
+        console.log("To-do created")
 })
 
 

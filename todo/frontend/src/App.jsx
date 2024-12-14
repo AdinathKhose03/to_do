@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { CreateTodo } from './components/CreateTodo'
 import { Todos } from './components/Todos'
@@ -8,24 +6,16 @@ import { Todos } from './components/Todos'
 function App() {
   
   const [todos, setTodos] = useState([])
+  fetch("http://localhost:3000/todo")
+    .then(async function(res){
+      const json = await res.json()
+      setTodos(json.todos)
+    })
 
   return (
     <>
       <CreateTodo/>
-      <Todos 
-        todos = {[
-          {
-            title:"Study",
-            description:"Consistency",
-            completed:true
-          },
-          {
-            title:"Go to gym",
-            description:"At 6AM",
-            completed:true
-          }
-        ]}
-      ></Todos>
+      <Todos todos = {todos} />
     </>
   )
 }
